@@ -17,22 +17,19 @@ class FileUpload(object):
             return
 
         df = pd.read_csv(file)
-        st.dataframe(df)
-        file.close()
+        st.dataframe(df) 
+        return df
         
 
 def main():
-    activity = [ 'Linear regression', 'Upload your csv', 'About']
-    choice = st.sidebar.selectbox('Menu', activity)
+    file_csv = []
+    st.subheader('Upload your csv')
 
-    if choice == 'Linear regression':
-        st.subheader('Linear Regression')
+    fileUpLoad = FileUpload()
+    file_csv = fileUpLoad.run()
+    print(file_csv)
+
     
-    if choice == 'Upload your csv':
-        st.subheader('Upload your csv')
-
-        fileUpLoad = FileUpload()
-        fileUpLoad.run()
 
 
       
